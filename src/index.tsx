@@ -4,7 +4,7 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 // import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 const theme = createTheme({
   palette: {
@@ -12,9 +12,9 @@ const theme = createTheme({
       main: '#2c6157',
     },
     secondary: {
-      main: '#6fd056'
-    }
-  }
+      main: '#6fd056',
+    },
+  },
 })
 
 ReactDOM.render(

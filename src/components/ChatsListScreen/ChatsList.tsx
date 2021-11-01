@@ -1,23 +1,38 @@
 import React from 'react'
-import { chats } from '../../db'
 import moment from 'moment'
 
+import { chats } from '../../db'
+import {
+  Container,
+  StyledList,
+  StyledListItem,
+  ChatPicture,
+  ChatInfo,
+  ChatName,
+  MessageContent,
+  MessageDate,
+} from './ChatsList.styled'
+
 const ChatsList: React.FC = () => (
-  <div>
-    <ul>
+  <Container>
+    <StyledList>
       {chats.map(({ id, picture, name, lastMessage }) => {
         console.log(lastMessage)
         return (
-          <li key={id}>
-            <img src={picture} alt='Profile pic' />
-            <div>{name}</div>
-            <div>{lastMessage?.content}</div>
-            <div>{moment(lastMessage?.createdAt).format('HH:mm')}</div>
-          </li>
+          <StyledListItem key={id}>
+            <ChatPicture src={picture} alt='Profile pic' />
+            <ChatInfo>
+              <ChatName>{name}</ChatName>
+              <MessageContent>{lastMessage?.content}</MessageContent>
+              <MessageDate>
+                {moment(lastMessage?.createdAt).format('HH:mm')}
+              </MessageDate>
+            </ChatInfo>
+          </StyledListItem>
         )
       })}
-    </ul>
-  </div>
+    </StyledList>
+  </Container>
 )
 
 export default ChatsList
