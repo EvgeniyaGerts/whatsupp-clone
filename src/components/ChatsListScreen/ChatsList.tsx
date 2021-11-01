@@ -1,26 +1,21 @@
 import React from 'react'
+import { chats } from '../../db'
+import moment from 'moment'
 
 const ChatsList: React.FC = () => (
   <div>
     <ul>
-      <li>
-        <img
-          src='https://randomuser.me/api/portraits/thumb/men/1.jpg'
-          alt='Profile pic'
-        />
-        <div>Eva Gerz</div>
-        <div>You on your way?</div>
-        <div>10:25</div>
-      </li>
-      <li>
-        <img
-          src='https://randomuser.me/api/portraits/thumb/men/2.jpg'
-          alt='Profile pic'
-        />
-        <div>Pirozhok Tolstoy</div>
-        <div>Mrrrrrrrr</div>
-        <div>16: 02</div>
-      </li>
+      {chats.map(({ id, picture, name, lastMessage }) => {
+        console.log(lastMessage)
+        return (
+          <li key={id}>
+            <img src={picture} alt='Profile pic' />
+            <div>{name}</div>
+            <div>{lastMessage?.content}</div>
+            <div>{moment(lastMessage?.createdAt).format('HH:mm')}</div>
+          </li>
+        )
+      })}
     </ul>
   </div>
 )
